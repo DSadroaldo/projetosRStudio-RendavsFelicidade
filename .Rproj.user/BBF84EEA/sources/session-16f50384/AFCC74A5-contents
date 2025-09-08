@@ -44,13 +44,15 @@ data = read.csv(file ='renda.data.csv',
 # Análise Exploratória dos dados
 
 head(data)
-
+tail(data)
 
 str(data)
 
+# a função 'summary' gera um resumo estatístico descritivo de um objeto
+# É um conjunto de medidas e informações que resumem os dados de forma simples, sem precisar olhar cada observação.
 summary(data)
 
-
+# função para gerar descritivas
 descritivas = function(x)list(
   Média=mean(x),
   Mediana=median(x),
@@ -65,14 +67,20 @@ descritivas = function(x)list(
 
 attach(data)
 
+# descritivas de renda
 descritivas(Renda)
+# descritivas de Felicidade
 descritivas(Felicidade)
 
-
+# >> para entendermos mais as frequencias dotadas dos valores presentes nas descritivas, vou adotar o grafico histograma. Torna-se mais facil de verificarmos estas r frequencias mais didaticas
 hist(Felicidade)
 
-
-
+# entendendo a estrutura do grafico mediante a função empregada
+# - > O código segue a lógica em camadas do ggplot2:   
+# - > Define os dados e os eixos → ggplot(data, aes(...))
+# - > Adiciona a geometria do gráfico → geom_histogram(...)
+# - > Ajusta o tema → theme_bw() e theme(...)
+# - > Adiciona títulos e rótulos → labs(...)
 x11()
 ggplot(data = data, aes(x = Felicidade)) +
   geom_histogram(fill = "steelblue", color = "black") +
@@ -80,7 +88,9 @@ ggplot(data = data, aes(x = Felicidade)) +
   theme(axis.text.x=element_text(size=rel(2) )) +
   labs(title = "Histograma Felicidade", x = "Felicidade", y = "Frequência")
 
-
+# -> percebemos que a distribuição de frequencia da minha variavel Felicidade obedece uma variação de frequencia normal.Isto pq temos uma escalada, não uniforme, de valores dentro dos eixos, assumindo em determinado momento uma parábola, ascendente e descendente, o que é experado.
+# -------------------------------------------------------------------------
+# distribuição da renda
 hist(Renda)
 
 x11()
@@ -90,8 +100,23 @@ ggplot(data = data, aes(x = Renda)) +
   theme(axis.text.x=element_text(size=rel(2) )) +
   labs(title = "Histograma Renda", x = "Renda", y = "Frequência")
 
+# Distribuição Normal?
+# FELICIDADE = SEGUE uma distribuição normal!
+# RENDA = NÂO segue uma distruição normal!
+
+# esta informação eh de extrema importância ao que consideramos na escolha do modelo a se utilizar
+# Isso pq, para precisamos que nossa variavel resposta siga uma ditribuição de frequencia aparentemente normal
+# ----------------------------------------------------------------
 
 
+
+# ----------------------------------------------------------------
+# CORRELAÇÃO LINEAR
+#  - > precisamos validar a relação existente entre as duas variaveis.
+#  - > É necessário quantificar essa relação entre as variáveis
+#  - > e, este QUANTIFICAR, é quem servirá de baseamento da contrução de nosso modelo.
+
+#  o uso do plot em R, faz exatamente este correlação entre as variaveis.
 plot(Renda, Felicidade)
 
 ggplot(data=data, aes(x=Felicidade, y=Renda)) + 
@@ -104,7 +129,7 @@ ggplot(data=data, aes(x=Felicidade, y=Renda)) +
 
 
 
-  
+
 4#------------------------------------------------------------------------
 # Construção do Modelo
 
@@ -200,10 +225,10 @@ summary(Modelo1)
 
 
 coracao = read.csv(file ='coracao.data.csv', 
-                 header = T, 
-                 fileEncoding="UTF-8-BOM",
-                 sep = ";", 
-                 na.strings = '..')
+                   header = T, 
+                   fileEncoding="UTF-8-BOM",
+                   sep = ";", 
+                   na.strings = '..')
 #------------------------------------------------------------------------
 head(coracao)
 
@@ -393,7 +418,7 @@ plot(Modelob)
 #Gráfico de Dispersão com o Modelo
 
 Preditos = predict(Modelob,data.frame(x=q),interval='confidence',
-                               level=0.99)
+                   level=0.99)
 
 x11()
 plot(q,noisy.y,col='deepskyblue4',xlab='q',main='Dados Observados')

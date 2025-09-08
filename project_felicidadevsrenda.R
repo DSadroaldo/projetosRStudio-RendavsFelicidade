@@ -415,7 +415,7 @@ plot(Modelob)
 
 
 
-#Gráfico de Dispersão com o Modelo
+#Gráfico de Dispersão com o Modelo.
 
 Preditos = predict(Modelob,data.frame(x=q),interval='confidence',
                    level=0.99)
