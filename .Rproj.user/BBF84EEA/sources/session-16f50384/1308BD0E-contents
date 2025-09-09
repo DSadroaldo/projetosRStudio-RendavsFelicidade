@@ -1,0 +1,4 @@
+install.packages("gt")
+.rs.api.restartSession()
+library(gt)
+library(dplyr)

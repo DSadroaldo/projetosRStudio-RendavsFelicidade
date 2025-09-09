@@ -1,0 +1,26 @@
+{
+    "id": "AFCC74A5",
+    "path": "/cloud/project/project_felicidadevsrenda.R",
+    "project_path": "project_felicidadevsrenda.R",
+    "type": "r_source",
+    "hash": "2177639118",
+    "contents": "",
+    "dirty": false,
+    "created": 1755824778602.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "127,0",
+        "scrollLine": "115"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1757359931,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1757359931651,
+    "read_only": false,
+    "read_only_alternatives": []
+}
