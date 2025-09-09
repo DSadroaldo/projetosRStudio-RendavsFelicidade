@@ -419,7 +419,7 @@ plot(Modelob)
 
 Preditos = predict(Modelob,data.frame(x=q),interval='confidence',
                    level=0.99)
-
+#plotagem
 x11()
 plot(q,noisy.y,col='deepskyblue4',xlab='q',main='Dados Observados')
 lines(q,Preditos[,1],col='green',lwd=3)
